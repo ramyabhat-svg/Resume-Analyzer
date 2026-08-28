@@ -1,0 +1,7 @@
+fastapi
+uvicorn[standard]
+pypdf
+sentence-transformers
+spacy
+python-multipart
+pytest
