@@ -128,27 +128,4 @@ docker run -p 8000:8000 resume-analyzer
 ### `GET /health`
 Basic liveness check — returns `{"status": "ok"}`.
 
-## Testing
 
-```bash
-pytest tests/ -v
-```
-
-## Known limitations
-
-- Fuzzy skill matching trades precision for recall — very short skill
-  names (e.g. "R", "Git") are harder to fuzzy-match safely without
-  false positives, so the match threshold is tuned conservatively.
-- Section parsing is heuristic (regex/keyword-based), not layout-aware
-  — unconventional resume formats may not split perfectly into
-  sections.
-- Semantic similarity scores between a formal JD and a bulleted resume
-  are naturally lower than a document-to-document comparison would be;
-  scores are best read comparatively (across JDs or resumes) rather
-  than as an absolute percentage.
-
-## Roadmap
-
-- Deploy as a public live demo (AWS App Runner)
-- Optional lightweight frontend (Streamlit) calling the API
-- Per-skill similarity scoring, not just found/missing
